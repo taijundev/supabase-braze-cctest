@@ -46,10 +46,12 @@ POST https://<project-ref>.supabase.co/functions/v1/get-coupons
 
 ```bash
 curl -X POST https://<project-ref>.supabase.co/functions/v1/get-coupons \
-  -H "Authorization: Bearer <anon-key>" \
+  -H "apiKey: <publishable-key>" \
   -H "Content-Type: application/json" \
   -d '{"user_id": "user_123", "prefer_categories": ["fashion", "food"]}'
 ```
+
+> `publishable-key`는 Supabase 대시보드 **Settings > API** 에서 `sb_publishable_...` 형태의 키를 사용합니다.
 
 ## Braze Connected Content 연동 예시
 
@@ -65,7 +67,7 @@ curl -X POST https://<project-ref>.supabase.co/functions/v1/get-coupons \
     https://<project-ref>.supabase.co/functions/v1/get-coupons
     :method post
     :headers {
-      "Authorization": "Bearer <anon-key>",
+      "apiKey": "<publishable-key>",
       "Content-Type": "application/json"
     }
     :body {{postbody}}
@@ -83,7 +85,7 @@ curl -X POST https://<project-ref>.supabase.co/functions/v1/get-coupons \
 # 1. Supabase 로그인
 supabase login
 
-# 2. 프로젝트 연결
+# 2. 프로젝트 연결 (supabase.com에서 생성한 project-ref 입력)
 supabase link --project-ref <project-ref>
 
 # 3. 배포
