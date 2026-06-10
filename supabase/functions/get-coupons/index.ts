@@ -30,6 +30,23 @@ const SAMPLE_COUPONS: Coupon[] = [
   // travel
   { coupon_id: "C011", coupon_name: "국내 숙박 15% 할인", category: "travel", discount_amount: 15, expired_at: "2026-12-31" },
   { coupon_id: "C012", coupon_name: "항공권 5만원 할인", category: "travel", discount_amount: 50000, expired_at: "2026-10-31" },
+  // sports
+  { coupon_id: "C013", coupon_name: "스포츠 용품 20% 할인", category: "sports", discount_amount: 20, expired_at: "2026-09-30" },
+  { coupon_id: "C014", coupon_name: "헬스 보충제 10% 할인", category: "sports", discount_amount: 10, expired_at: "2026-08-31" },
+  { coupon_id: "C015", coupon_name: "아웃도어 장비 3만원 할인", category: "sports", discount_amount: 30000, expired_at: "2026-11-30" },
+  // home
+  { coupon_id: "C016", coupon_name: "가구 10만원 할인", category: "home", discount_amount: 100000, expired_at: "2026-12-31" },
+  { coupon_id: "C017", coupon_name: "인테리어 소품 15% 할인", category: "home", discount_amount: 15, expired_at: "2026-10-31" },
+  { coupon_id: "C018", coupon_name: "주방용품 5,000원 할인", category: "home", discount_amount: 5000, expired_at: "2026-09-30" },
+  // health
+  { coupon_id: "C019", coupon_name: "건강기능식품 20% 할인", category: "health", discount_amount: 20, expired_at: "2026-11-30" },
+  { coupon_id: "C020", coupon_name: "비타민 세트 1만원 할인", category: "health", discount_amount: 10000, expired_at: "2026-08-31" },
+  // kids
+  { coupon_id: "C021", coupon_name: "유아 의류 25% 할인", category: "kids", discount_amount: 25, expired_at: "2026-10-31" },
+  { coupon_id: "C022", coupon_name: "장난감 1만5천원 할인", category: "kids", discount_amount: 15000, expired_at: "2026-12-31" },
+  // books
+  { coupon_id: "C023", coupon_name: "도서 3권 구매 시 1만원 할인", category: "books", discount_amount: 10000, expired_at: "2026-09-30" },
+  { coupon_id: "C024", coupon_name: "전자책 구독 20% 할인", category: "books", discount_amount: 20, expired_at: "2026-12-31" },
 ];
 
 Deno.serve(async (req: Request) => {
@@ -58,7 +75,7 @@ Deno.serve(async (req: Request) => {
 
   const coupons =
     !prefer_categories || prefer_categories.length === 0
-      ? SAMPLE_COUPONS
+      ? []
       : SAMPLE_COUPONS.filter((c) => prefer_categories.includes(c.category));
 
   return new Response(JSON.stringify(coupons), {
